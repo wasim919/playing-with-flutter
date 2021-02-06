@@ -37,6 +37,10 @@ class Result extends StatelessWidget {
           onPressed: resetQuiz,
           child: Text(
             "Reset quiz!",
+            style: TextStyle(
+              color: Colors.blue,
+              fontSize: 20,
+            ),
           ),
         )
       ],
