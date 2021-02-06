@@ -13,22 +13,39 @@ class QuizApp extends StatefulWidget {
 class QuizAppState extends State<QuizApp> {
   var questions = [
     {
-      "questionText": "What\'s your name?",
-      "answers": ["ikw", "kiw", "iwk"],
+      "questionText": "What\'s your favourite color?",
+      "answers": [
+        {"text": "Black", "score": 10},
+        {"text": "Red", "score": 5},
+        {"text": "Green", "score": 3},
+        {"text": "White", "score": 1}
+      ],
     },
     {
-      "questionText": "Where are you from?",
-      "answers": ["somewhere", "anywhere", "everywhere"],
+      "questionText": "What\'s your favourite animal?",
+      "answers": [
+        {"text": "Rabbit", "score": 2},
+        {"text": "Snake", "score": 20},
+        {"text": "Elephant", "score": 2},
+        {"text": "Lion", "score": 5}
+      ],
     },
     {
-      "questionText": "Where do you live currently?",
-      "answers": ["nowhere"],
+      "questionText": "What\'s your favourite season?",
+      "answers": [
+        {"text": "Winter", "score": 20},
+        {"text": "Spring", "score": 1},
+        {"text": "Summer", "score": 0},
+        {"text": "Autumn", "score": 5}
+      ],
     },
   ];
   int questionIndex = 0;
-  void answerQuestion() {
+  int score = 0;
+  void answerQuestion(int answerScore) {
     setState(() {
       questionIndex += 1;
+      score += answerScore;
     });
   }
 
@@ -47,7 +64,7 @@ class QuizAppState extends State<QuizApp> {
                 questionAnswers: questions[questionIndex]['answers'],
                 answerQuestion: answerQuestion,
               )
-            : Result(),
+            : Result(score),
       ),
     );
   }
