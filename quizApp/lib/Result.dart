@@ -33,7 +33,7 @@ class Result extends StatelessWidget {
         SizedBox(
           height: 16,
         ),
-        RaisedButton(
+        FlatButton(
           onPressed: resetQuiz,
           child: Text(
             "Reset quiz!",

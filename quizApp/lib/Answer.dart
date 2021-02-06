@@ -11,7 +11,7 @@ class Answer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      margin: EdgeInsets.all(16),
+      margin: EdgeInsets.all(5),
       child: RaisedButton(
         onPressed: () {
           selectHandler(answerScore);

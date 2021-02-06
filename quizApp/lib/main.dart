@@ -64,7 +64,7 @@ class QuizAppState extends State<QuizApp> {
         centerTitle: true,
       ),
       body: Padding(
-        padding: EdgeInsets.all(16),
+        padding: EdgeInsets.all(0),
         child: questionIndex < questions.length
             ? Quiz(
                 questionText: questions[questionIndex]['questionText'],
