@@ -8,9 +8,10 @@ class TransactionList extends StatelessWidget {
   TransactionList(this._transactions);
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ..._transactions.map((tx) {
+    return Container(
+      height: 300,
+      child: ListView.builder(
+        itemBuilder: (ctx, index) {
           return Card(
             child: Row(
               children: [
@@ -26,7 +27,7 @@ class TransactionList extends StatelessWidget {
                   )),
                   padding: EdgeInsets.all(10),
                   child: Text(
-                    "\$${tx.amount}",
+                    "\$${_transactions[index].amount}",
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -38,14 +39,14 @@ class TransactionList extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      tx.title,
+                      _transactions[index].title,
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
-                      DateFormat.yMMMd().format(tx.date),
+                      DateFormat.yMMMd().format(_transactions[index].date),
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.grey[600],
@@ -56,8 +57,9 @@ class TransactionList extends StatelessWidget {
               ],
             ),
           );
-        }).toList()
-      ],
+        },
+        itemCount: _transactions.length,
+      ),
     );
   }
 }
