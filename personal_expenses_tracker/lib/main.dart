@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  List<Transaction> transactions = [
+  final List<Transaction> transactions = [
     Transaction(
       id: 't1',
       title: 'New Shoes',
@@ -30,6 +30,8 @@ class MyHomePage extends StatelessWidget {
       date: DateTime.now(),
     )
   ];
+  final titleInput = TextEditingController();
+  final amountInput = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,12 +40,35 @@ class MyHomePage extends StatelessWidget {
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Card(
             child: Text("Charts"),
             color: Colors.blue,
           ),
+          Card(
+              elevation: 10,
+              child: Container(
+                  padding: EdgeInsets.all(10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      TextField(
+                        decoration: InputDecoration(labelText: 'Title'),
+                        controller: titleInput,
+                      ),
+                      TextField(
+                          decoration: InputDecoration(labelText: "Amount"),
+                          controller: amountInput),
+                      FlatButton(
+                        onPressed: () {
+                          print(titleInput.text);
+                          print(amountInput.text);
+                        },
+                        child: Text("Add Transaction"),
+                        textColor: Colors.purple,
+                      )
+                    ],
+                  ))),
           Column(
             children: [
               ...transactions.map((tx) {
